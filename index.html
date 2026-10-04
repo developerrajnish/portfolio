@@ -282,7 +282,7 @@
   .contact-single{ max-width:620px; margin:0 auto; }
   .contact-box .contact-links{ justify-content:center !important; }
   .contact-grid{ display:grid; grid-template-columns: .9fr 1.1fr; gap:36px; align-items:start; }
-  .contact-left p{ margin: 0 0 22px; }
+  .contact-left p{ margin: 0 auto 22px; }
   .enq{ background:#fff; color: var(--ink); border-radius:16px; padding:24px; display:grid; gap:14px; }
   .enq-row{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
   .enq-f label{ display:block; font-size:13px; font-weight:700; margin-bottom:5px; color: var(--navy); }
@@ -306,6 +306,17 @@
     .agency-box,.mockup-box{ padding:24px 20px; }
     .contact-box{ padding: 36px 18px; }
   }
+
+  /* contact: tighter spacing, true centering */
+  #contact{ padding: 36px 0 56px; }
+  .contact-box{ padding: 44px 32px; }
+  .contact-single{ max-width: 600px; margin: 0 auto; text-align: center; }
+  .contact-box .sec-eyebrow{ margin-bottom: 8px; }
+  .contact-box h2{ font-size: clamp(24px, 3.2vw, 34px); line-height: 1.2; margin: 0 auto 12px; max-width: 520px; }
+  .contact-left p{ max-width: 520px; margin: 0 auto 22px; }
+  .contact-box .contact-links{ justify-content: center !important; margin-bottom: 16px; }
+  .contact-loc{ text-align: center; }
+  @media (max-width: 560px){ .contact-box{ padding: 32px 18px; } }
 </style>
 </head>
 <body>
