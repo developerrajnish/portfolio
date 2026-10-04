@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kettle & Crumb — Café Menu & Table Booking (Sample Website)</title>
+<meta name="description" content="Sample café website by Rajnish Tripathi: menu board with tabs, opening hours, location and table booking form.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://rajnishtportfolio.netlify.app/demo-cafe.html">
+<meta property="og:title" content="Kettle & Crumb — Café Menu & Table Booking (Sample Website)">
+<meta property="og:description" content="Sample café website by Rajnish Tripathi: menu board with tabs, opening hours, location and table booking form.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rajnishtportfolio.netlify.app/demo-cafe.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Crect%20width%3D%27100%27%20height%3D%27100%27%20rx%3D%2720%27%20fill%3D%27%234a3626%27/%3E%3Ctext%20x%3D%2750%27%20y%3D%2766%27%20font-size%3D%2746%27%20font-family%3D%27sans-serif%27%20font-weight%3D%27bold%27%20fill%3D%27%23fff%27%20text-anchor%3D%27middle%27%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&family=Playfair+Display:wght@600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--font:'Lato',sans-serif;--font-head:'Playfair Display',serif;--primary:#4a3626;--accent:#b5652b;--accent-text:#9a5422;--ink:#2d2119;--heading:#2d2119;--muted:#6e5d50;--bg:#fffaf4;--soft:#f6ede3;--line:#eadccd;--ring:rgba(181,101,43,.22);--card:#fff;--footer-bg:#231811}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img,svg{max-width:100%}
+:focus-visible{outline:3px solid var(--focus,#ff6b00);outline-offset:2px;border-radius:4px}
+.container{max-width:1080px;margin:0 auto;padding:0 20px}
+/* ---- Rajnish demo bar (identical on all demos) ---- */
+.demo-bar{position:sticky;top:0;z-index:200;background:#1a2b4a;color:#fff;font-family:'Inter',system-ui,sans-serif;font-size:13px}
+.demo-bar .db-in{max-width:1080px;margin:0 auto;padding:7px 20px;display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:44px}
+.demo-bar a.db-back{color:#fff;text-decoration:none;font-weight:600;white-space:nowrap}
+.demo-bar a.db-back:hover{text-decoration:underline}
+.demo-bar .db-label{color:#b9c4d8;font-weight:500;text-align:center}
+.demo-bar a.db-cta{background:#ff6b00;color:#fff;text-decoration:none;font-weight:700;padding:7px 14px;border-radius:8px;white-space:nowrap}
+.demo-bar a.db-cta:hover{background:#e05e00}
+.db-short{display:none}
+@media(max-width:640px){.demo-bar .db-label{font-size:11.5px;background:rgba(255,255,255,.1);padding:3px 8px;border-radius:20px;white-space:nowrap}.db-long{display:none}.db-short{display:inline}.demo-bar .db-in{padding:7px 14px}}
+/* ---- site header ---- */
+.site-header{position:sticky;top:44px;z-index:100;background:var(--header-bg,#fff);border-bottom:1px solid var(--line)}
+.site-header .container{display:flex;align-items:center;justify-content:space-between;height:66px;gap:12px}
+.logo{font-family:var(--font-head,var(--font));font-weight:800;font-size:20px;color:var(--primary);text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo .mark{width:34px;height:34px;border-radius:9px;background:var(--primary);color:#fff;display:grid;place-items:center;font-size:15px}
+.site-nav{display:flex;gap:22px;align-items:center}
+.site-nav a{text-decoration:none;font-weight:600;font-size:15px;color:var(--muted)}
+.site-nav a:hover{color:var(--primary)}
+.nav-toggle{display:none;background:none;border:1px solid var(--line);border-radius:8px;padding:8px 12px;font:inherit;font-weight:600;color:var(--ink);cursor:pointer}
+@media(max-width:820px){
+ .nav-toggle{display:block}
+ .site-nav{display:none;position:absolute;left:0;right:0;top:66px;background:var(--header-bg,#fff);flex-direction:column;align-items:stretch;gap:0;padding:8px 20px 16px;border-bottom:1px solid var(--line);box-shadow:0 12px 24px -12px rgba(0,0,0,.2)}
+ .site-nav.open{display:flex}
+ .site-nav a{padding:12px 0;border-bottom:1px solid var(--line)}
+ .site-nav .btn{margin-top:12px;text-align:center}
+}
+/* ---- common ---- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:inherit;font-weight:700;font-size:15px;padding:13px 22px;border-radius:var(--radius,10px);border:2px solid transparent;cursor:pointer;text-decoration:none;transition:.15s}
+.btn-primary{background:var(--accent);color:var(--on-accent,#fff)}
+.btn-primary:hover{filter:brightness(.93)}
+.btn-outline{background:transparent;border-color:currentColor;color:var(--primary)}
+.btn-light{background:#fff;color:var(--primary)}
+section{padding:72px 0;scroll-margin-top:110px}
+.alt{background:var(--soft)}
+.eyebrow{font-size:12.5px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--accent-text,var(--accent));margin-bottom:8px}
+h1,h2,h3{font-family:var(--font-head,var(--font));color:var(--heading,var(--ink));line-height:1.2}
+h2.title{font-size:clamp(26px,4vw,36px);margin-bottom:12px}
+p.lead{color:var(--muted);max-width:620px;margin-bottom:36px}
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:900px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.g2,.g3,.g4{grid-template-columns:1fr}}
+.card{background:var(--card,#fff);border:1px solid var(--line);border-radius:var(--radius,14px);padding:24px}
+.card h3{font-size:18px;margin-bottom:6px}
+.card p{color:var(--muted);font-size:14.5px}
+.icon{font-size:28px;margin-bottom:10px;display:block}
+.tag{display:inline-block;font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:var(--soft);color:var(--primary);border:1px solid var(--line)}
+.note{font-size:12.5px;color:var(--muted);font-style:italic}
+/* forms */
+.form{display:grid;gap:14px}
+.form .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:520px){.form .row{grid-template-columns:1fr}}
+.field label{display:block;font-size:13.5px;font-weight:700;margin-bottom:6px;color:var(--ink)}
+.field input,.field select,.field textarea{width:100%;font:inherit;font-size:15px;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;background:#fff;color:#1d2433}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 3px var(--ring,rgba(0,0,0,.08))}
+.field.invalid input,.field.invalid select,.field.invalid textarea{border-color:#c62828}
+.err{display:none;color:#c62828;font-size:12.5px;margin-top:5px;font-weight:600}
+.field.invalid .err{display:block}
+/* table */
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius,14px);background:#fff}
+table{width:100%;border-collapse:collapse;font-size:14.5px;min-width:520px}
+th,td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--line)}
+th{background:var(--soft);font-weight:700;color:var(--heading,var(--ink))}
+tr:last-child td{border-bottom:none}
+/* faq */
+details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:10px}
+summary{font-weight:700;cursor:pointer;color:var(--heading,var(--ink))}
+details p{margin-top:10px;color:var(--muted);font-size:14.5px}
+/* demo modal */
+.dm-overlay{position:fixed;inset:0;background:rgba(15,22,38,.6);display:none;align-items:center;justify-content:center;z-index:500;padding:20px}
+.dm-overlay.show{display:flex}
+.dm-box{background:#fff;color:#1a2b4a;border-radius:16px;max-width:420px;width:100%;padding:28px 24px;text-align:center;font-family:'Inter',system-ui,sans-serif;box-shadow:0 30px 60px -20px rgba(0,0,0,.5)}
+.dm-ico{width:56px;height:56px;border-radius:50%;background:#25d366;display:grid;place-items:center;margin:0 auto 14px}
+.dm-ico svg{width:30px;height:30px;fill:#fff}
+.dm-box h3{font-family:'Inter',system-ui,sans-serif;color:#1a2b4a;font-size:19px;margin-bottom:8px}
+.dm-box p{color:#5a6a85;font-size:14.5px;margin-bottom:20px}
+.dm-actions{display:flex;flex-direction:column;gap:10px}
+.dm-actions a{background:#ff6b00;color:#fff;text-decoration:none;font-weight:700;padding:12px;border-radius:10px}
+.dm-actions a:hover{background:#e05e00}
+.dm-actions button{background:#fff;border:1.5px solid #e6e9ef;color:#1a2b4a;font:inherit;font-weight:600;padding:11px;border-radius:10px;cursor:pointer}
+/* floating whatsapp */
+.wa-float{position:fixed;right:20px;bottom:20px;width:58px;height:58px;border-radius:50%;background:#25d366;border:none;cursor:pointer;display:grid;place-items:center;box-shadow:0 10px 26px -6px rgba(37,211,102,.6);z-index:150}
+.wa-float svg{width:30px;height:30px;fill:#fff}
+/* Rajnish sales section (identical on all demos) */
+.sell{background:#1a2b4a;color:#fff;font-family:'Inter',system-ui,sans-serif;padding:64px 0}
+.sell-in{max-width:1080px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:center}
+@media(max-width:820px){.sell-in{grid-template-columns:1fr}}
+.sell-tag{display:inline-block;background:rgba(255,107,0,.15);color:#ffb27a;border:1px solid rgba(255,107,0,.4);font-size:12.5px;font-weight:700;padding:5px 12px;border-radius:20px;margin-bottom:14px}
+.sell h2{font-family:'Inter',system-ui,sans-serif;color:#fff;font-size:clamp(24px,3.6vw,34px);line-height:1.2;margin-bottom:12px}
+.sell p{color:#b9c4d8;font-size:15.5px;margin-bottom:22px;max-width:560px}
+.sell-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.sell-btns a{text-decoration:none;font-weight:700;padding:13px 20px;border-radius:10px;font-size:15px}
+.sb-wa{background:#ff6b00;color:#fff}.sb-wa:hover{background:#e05e00}
+.sb-mock{background:#fff;color:#1a2b4a}.sb-mock:hover{background:#eef1f6}
+.sell-back{color:#b9c4d8;font-size:13.5px}
+.sell-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:24px}
+.sell-card b{display:block;margin-bottom:12px;font-size:15px}
+.sell-card ul{list-style:none;display:grid;gap:9px}
+.sell-card li{font-size:14.5px;color:#e3e9f3}
+.sell-card li::before{content:"✓  ";color:#4ade80;font-weight:800}
+/* demo footer */
+.demo-footer{background:var(--footer-bg,#111827);color:var(--footer-ink,#cbd5e1);padding:28px 0;font-size:13.5px;text-align:center}
+.demo-footer a{color:#fff;font-weight:700}
+.biz-footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.12);text-align:left}
+
+
+.hero{background:linear-gradient(rgba(35,24,17,.72),rgba(35,24,17,.72)),radial-gradient(circle at 30% 30%,#8a5a3b,#2d2119);color:#fff;padding:96px 0;text-align:center}
+.hero-in{display:flex;flex-direction:column;align-items:center}
+.pill{display:inline-block;border:1px solid rgba(255,255,255,.35);padding:6px 14px;border-radius:30px;font-size:13px;font-weight:600;margin-bottom:18px;letter-spacing:.5px}
+.hero h1{color:#fff;font-size:clamp(36px,6vw,60px);margin-bottom:14px}
+.hero h1 em{color:#f2c48d}
+.hero-sub{color:#ead9c8;font-size:17px;max-width:560px;margin-bottom:24px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+#location .hero-actions{justify-content:flex-start}
+.btn-outline-light{border-color:#fff;color:#fff;background:transparent}
+.btn.sm{padding:9px 14px;font-size:14px}
+.narrow{max-width:820px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.tab{font:inherit;font-weight:700;font-size:14.5px;padding:10px 18px;border-radius:30px;border:1.5px solid var(--line);background:#fff;color:var(--ink);cursor:pointer}
+.tab.on{background:var(--primary);border-color:var(--primary);color:#fff}
+.board{background:#2d2119;color:#f6ede3;border-radius:16px;padding:22px 24px;box-shadow:inset 0 0 0 6px #3d2c22}
+.mi{display:flex;align-items:baseline;gap:10px;padding:13px 0;border-bottom:1px dashed rgba(246,237,227,.18)}
+.mi:last-child{border-bottom:none}
+.mi b{display:block;font-family:var(--font-head);font-size:18px;color:#fff}
+.mi span{font-size:13px;color:#cbb8a6}
+.mi i{flex:1}
+.mi em{font-style:normal;font-weight:700;color:#f2c48d;white-space:nowrap}
+.info{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:760px){.info{grid-template-columns:1fr}}
+table.mini{min-width:0;font-size:15px;margin:6px 0 10px}
+table.mini td{padding:10px 0}
+table.mini td:last-child{text-align:right;font-weight:700}
+.status{font-weight:700;font-size:14.5px}
+.addr{font-weight:700;margin:10px 0 14px;color:var(--ink)}
+.book-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:start}
+@media(max-width:860px){.book-grid{grid-template-columns:1fr}}
+.ticks{list-style:none}.ticks li{margin-bottom:8px}.ticks li::before{content:"☕  "}
+
+</style>
+</head>
+<body>
+
+<div class="demo-bar" role="region" aria-label="Demo information">
+  <div class="db-in">
+    <a class="db-back" href="index.html#work">← <span class="db-long">Back to Rajnish's portfolio</span><span class="db-short">Portfolio</span></a>
+    <span class="db-label"><span class="db-long">Sample website — fictional business</span><span class="db-short">Sample site</span></span>
+    <a class="db-cta" href="https://wa.me/918896730111?text=Hi%20Rajnish%2C%20I%20saw%20your%20caf%C3%A9%20website%20demo%20and%20want%20a%20similar%20website%20for%20my%20business." target="_blank" rel="noopener"><span class="db-long">Get a website like this</span><span class="db-short">Get one like this</span></a>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container">
+    <a href="#top" class="logo" aria-label="Kettle &amp; Crumb home"><span class="mark" aria-hidden="true">K</span>Kettle &amp; Crumb</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="siteNav">☰ Menu</button>
+    <nav class="site-nav" id="siteNav" aria-label="Main"><a href="#menu">Menu</a><a href="#hours">Hours</a><a href="#location">Location</a><a href="#book">Book a table</a></nav>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="container hero-in">
+    <span class="pill">Coffee · Tea · Bakes · Snacks</span>
+    <h1>Slow mornings &amp; <em>good coffee.</em></h1>
+    <p class="hero-sub">A cosy neighbourhood café for your morning coffee, work-from-café afternoons and evening catch-ups.</p>
+    <div class="hero-actions"><a href="#menu" class="btn btn-primary">See the menu</a><a href="#book" class="btn btn-outline-light">Book a table</a></div>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="container narrow">
+    <div class="eyebrow">Menu</div>
+    <h2 class="title">On the menu today</h2>
+    <p class="lead">Sample menu and prices. The café can update items and prices any time.</p>
+    <div class="tabs" role="tablist" aria-label="Menu categories"><button role="tab" id="tab-coffee" aria-controls="panel-coffee" aria-selected="true" tabindex="0" class="tab on" data-tab="coffee">Coffee</button><button role="tab" id="tab-tea" aria-controls="panel-tea" aria-selected="false" tabindex="-1" class="tab" data-tab="tea">Tea</button><button role="tab" id="tab-snacks" aria-controls="panel-snacks" aria-selected="false" tabindex="-1" class="tab" data-tab="snacks">Snacks</button><button role="tab" id="tab-desserts" aria-controls="panel-desserts" aria-selected="false" tabindex="-1" class="tab" data-tab="desserts">Desserts</button></div>
+    <div class="board"><div role="tabpanel" id="panel-coffee" aria-labelledby="tab-coffee" class="panel"><div class="mi"><div><b>Espresso</b><span>Short, strong shot</span></div><i aria-hidden="true"></i><em>₹120</em></div><div class="mi"><div><b>Cappuccino</b><span>Espresso, steamed milk, foam</span></div><i aria-hidden="true"></i><em>₹180</em></div><div class="mi"><div><b>Cold Coffee</b><span>Blended with ice cream</span></div><i aria-hidden="true"></i><em>₹190</em></div><div class="mi"><div><b>Hazelnut Latte</b><span>Smooth latte with hazelnut</span></div><i aria-hidden="true"></i><em>₹210</em></div></div><div role="tabpanel" id="panel-tea" aria-labelledby="tab-tea" class="panel" hidden><div class="mi"><div><b>Masala Chai</b><span>Cutting-style with spices</span></div><i aria-hidden="true"></i><em>₹60</em></div><div class="mi"><div><b>Ginger Lemon Honey</b><span>Warm and soothing</span></div><i aria-hidden="true"></i><em>₹110</em></div><div class="mi"><div><b>Iced Peach Tea</b><span>Chilled and fruity</span></div><i aria-hidden="true"></i><em>₹150</em></div><div class="mi"><div><b>Green Tea</b><span>Light and fresh</span></div><i aria-hidden="true"></i><em>₹100</em></div></div><div role="tabpanel" id="panel-snacks" aria-labelledby="tab-snacks" class="panel" hidden><div class="mi"><div><b>Veg Club Sandwich</b><span>Triple-layer, fries on side</span></div><i aria-hidden="true"></i><em>₹220</em></div><div class="mi"><div><b>Paneer Tikka Wrap</b><span>Grilled paneer, mint mayo</span></div><i aria-hidden="true"></i><em>₹240</em></div><div class="mi"><div><b>Peri Peri Fries</b><span>Crispy and spicy</span></div><i aria-hidden="true"></i><em>₹150</em></div><div class="mi"><div><b>Garlic Bread</b><span>With cheese dip</span></div><i aria-hidden="true"></i><em>₹160</em></div></div><div role="tabpanel" id="panel-desserts" aria-labelledby="tab-desserts" class="panel" hidden><div class="mi"><div><b>Chocolate Brownie</b><span>Warm, with chocolate sauce</span></div><i aria-hidden="true"></i><em>₹170</em></div><div class="mi"><div><b>Blueberry Cheesecake</b><span>Baked, per slice</span></div><i aria-hidden="true"></i><em>₹240</em></div><div class="mi"><div><b>Banoffee Jar</b><span>Banana, toffee, cream</span></div><i aria-hidden="true"></i><em>₹200</em></div><div class="mi"><div><b>Choco Chip Cookie</b><span>Freshly baked</span></div><i aria-hidden="true"></i><em>₹90</em></div></div></div>
+  </div>
+</section>
+
+<section id="hours" class="alt">
+  <div class="container info">
+    <div class="card">
+      <div class="eyebrow">Opening hours</div>
+      <table class="mini"><tbody>
+        <tr><td>Monday – Friday</td><td>8:00 AM – 10:00 PM</td></tr>
+        <tr><td>Saturday – Sunday</td><td>9:00 AM – 11:00 PM</td></tr>
+      </tbody></table>
+      <p class="status" id="status"></p>
+    </div>
+    <div class="card" id="location">
+      <div class="eyebrow">Location</div>
+      <h3>Find Kettle &amp; Crumb</h3>
+      <p>The café address, landmark and Google Maps link appear here on the real website.</p>
+      <p class="addr">📍 Café address shown here</p>
+      <div class="hero-actions"><button class="btn btn-primary sm" data-demo="whatsapp" data-item="Please share the café location">Directions on WhatsApp</button><button class="btn btn-outline sm" data-demo="call">📞 Call</button></div>
+    </div>
+  </div>
+</section>
+
+<section id="book">
+  <div class="container book-grid">
+    <div>
+      <div class="eyebrow">Reservations</div>
+      <h2 class="title">Book a table</h2>
+      <p class="lead">Planning a get-together or a birthday? Reserve a table and the café confirms on WhatsApp.</p>
+      <ul class="ticks"><li>Free Wi-Fi &amp; charging points</li><li>Indoor &amp; balcony seating</li><li>Small parties welcome</li></ul>
+    </div>
+    <form class="form demo-form card" data-title="Table request received!">
+      <div class="row">
+        <div class="field"><label for="t_name">Name *</label><input id="t_name" name="t_name" type="text" placeholder="Your name" required><div class="err" role="alert"></div></div>
+        <div class="field"><label for="t_phone">Mobile number *</label><input id="t_phone" name="t_phone" type="tel" placeholder="10-digit mobile" inputmode="numeric" required><div class="err" role="alert"></div></div>
+      </div>
+      <div class="row">
+        <div class="field"><label for="t_date">Date *</label><input id="t_date" name="t_date" type="date" required><div class="err" role="alert"></div></div>
+        <div class="field"><label for="t_time">Time *</label><select id="t_time" name="t_time" required><option value="">Select</option><option>9:00 AM</option><option>11:00 AM</option><option>1:00 PM</option><option>4:00 PM</option><option>6:00 PM</option><option>8:00 PM</option></select><div class="err" role="alert"></div></div>
+      </div>
+      <div class="field"><label for="t_guests">Guests *</label><input id="t_guests" name="t_guests" type="number" placeholder="e.g. 4" required min="1" max="20"><div class="err" role="alert"></div></div>
+      <button class="btn btn-primary" type="submit">Request table</button>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<section class="sell" aria-labelledby="sellTitle">
+  <div class="sell-in">
+    <div>
+      <span class="sell-tag">This website can be customized for your business</span>
+      <h2 id="sellTitle">Like this website? Let's build one for your business.</h2>
+      <p>Tell me your business type, city and preferred style. I'll suggest a suitable website structure, and you get a free homepage mockup, usually within 24 hours.</p>
+      <div class="sell-btns">
+        <a class="sb-wa" href="https://wa.me/918896730111?text=Hi%20Rajnish%2C%20I%20saw%20your%20caf%C3%A9%20website%20demo%20and%20want%20a%20similar%20website%20for%20my%20business." target="_blank" rel="noopener">WhatsApp me →</a>
+        <a class="sb-mock" href="https://wa.me/918896730111?text=Hi%20Rajnish%2C%20I%20saw%20your%20caf%C3%A9%20demo%20and%20would%20like%20a%20free%20homepage%20mockup%20for%20my%20business.%20Business%20type%3A%20%2C%20City%3A%20%2C%20Preferred%20style%3A%20" target="_blank" rel="noopener">Get free homepage mockup →</a>
+      </div>
+      <a class="sell-back" href="index.html#pricing">See pricing</a> · <a class="sell-back" href="index.html#choose">See other demos</a>
+    </div>
+    <div class="sell-card">
+      <b>What this website does for your business</b>
+      <ul><li>Digital menu with prices</li><li>Table booking requests</li><li>Location & opening hours</li><li>"Open now" status</li><li>WhatsApp enquiries for parties & events</li></ul>
+    </div>
+  </div>
+</section>
+
+<footer class="demo-footer">
+  <div class="container">
+    <p>© 2026 Kettle &amp; Crumb — fictional demo website designed by <a href="index.html">Rajnish Tripathi</a></p>
+  </div>
+</footer>
+
+<button class="wa-float" data-demo="whatsapp" aria-label="Chat on WhatsApp (demo)"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.7.7 5.4 2.1 7.7L.5 31.5l8-2.1c2.3 1.2 4.8 1.9 7.5 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28.3c-2.4 0-4.7-.6-6.7-1.8l-.5-.3-4.8 1.3 1.3-4.6-.3-.5c-1.3-2.1-2-4.5-2-6.9C3 8.8 8.8 3 16 3s13 5.8 13 13-5.8 12.8-13 12.8zm7.1-9.6c-.4-.2-2.3-1.1-2.6-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.3 1.5-.2.3-.5.3-.9.1-.4-.2-1.6-.6-3.1-1.9-1.1-1-1.9-2.3-2.1-2.6-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.3-.4.4-.7.1-.3.1-.5 0-.7-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.7-.9-.7h-.8c-.3 0-.7.1-1 .5-.4.4-1.4 1.3-1.4 3.2s1.4 3.7 1.6 4c.2.3 2.8 4.3 6.8 6 .9.4 1.7.7 2.3.9.9.3 1.8.2 2.5.1.8-.1 2.3-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.1-.3-.2-.7-.4z"/></svg></button>
+
+<div class="dm-overlay" id="demoModal" role="dialog" aria-modal="true" aria-labelledby="dmTitle">
+  <div class="dm-box">
+    <div class="dm-ico"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.7.7 5.4 2.1 7.7L.5 31.5l8-2.1c2.3 1.2 4.8 1.9 7.5 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28.3c-2.4 0-4.7-.6-6.7-1.8l-.5-.3-4.8 1.3 1.3-4.6-.3-.5c-1.3-2.1-2-4.5-2-6.9C3 8.8 8.8 3 16 3s13 5.8 13 13-5.8 12.8-13 12.8zm7.1-9.6c-.4-.2-2.3-1.1-2.6-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.3 1.5-.2.3-.5.3-.9.1-.4-.2-1.6-.6-3.1-1.9-1.1-1-1.9-2.3-2.1-2.6-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.3-.4.4-.7.1-.3.1-.5 0-.7-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.7-.9-.7h-.8c-.3 0-.7.1-1 .5-.4.4-1.4 1.3-1.4 3.2s1.4 3.7 1.6 4c.2.3 2.8 4.3 6.8 6 .9.4 1.7.7 2.3.9.9.3 1.8.2 2.5.1.8-.1 2.3-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.1-.3-.2-.7-.4z"/></svg></div>
+    <h3 id="dmTitle">Enquiry received!</h3>
+    <p id="dmText"></p>
+    <div class="dm-actions">
+      <a href="https://wa.me/918896730111?text=Hi%20Rajnish%2C%20I%20saw%20your%20caf%C3%A9%20website%20demo%20and%20want%20a%20similar%20website%20for%20my%20business." target="_blank" rel="noopener">Get a website like this →</a>
+      <button type="button" id="dmClose">Close &amp; keep exploring</button>
+    </div>
+  </div>
+</div>
+
+<script>
+
+(function(){
+  var DEMO_MSG = "Demo: on your real website, this enquiry would arrive instantly on your WhatsApp and in your lead panel.";
+  var overlay = document.getElementById('demoModal');
+  var mTitle = document.getElementById('dmTitle');
+  var mText = document.getElementById('dmText');
+  var lastFocus = null;
+  window.openDemoModal = function(title, text){
+    lastFocus = document.activeElement;
+    mTitle.textContent = title || 'Enquiry received!';
+    mText.textContent = text || DEMO_MSG;
+    overlay.classList.add('show');
+    document.getElementById('dmClose').focus();
+  };
+  function closeModal(){ overlay.classList.remove('show'); if(lastFocus) lastFocus.focus(); }
+  document.getElementById('dmClose').addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e){ if(e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && overlay.classList.contains('show')) closeModal(); });
+
+  // demo call / whatsapp buttons
+  document.querySelectorAll('[data-demo]').forEach(function(el){
+    el.addEventListener('click', function(e){
+      e.preventDefault();
+      var kind = el.getAttribute('data-demo');
+      var extra = el.getAttribute('data-item');
+      if(kind === 'call'){
+        openDemoModal('This would call the business', 'Demo: on your real website, this button would call the business directly from the customer\'s phone.');
+      } else {
+        openDemoModal('This would open WhatsApp', 'Demo: on your real website, this opens a WhatsApp chat with the business' + (extra ? ' with "' + extra + '" already typed in' : '') + ', so the customer can enquire in one tap.');
+      }
+    });
+  });
+
+  // mobile nav
+  var t = document.querySelector('.nav-toggle'), nav = document.querySelector('.site-nav');
+  if(t && nav){
+    t.addEventListener('click', function(){ var o = nav.classList.toggle('open'); t.setAttribute('aria-expanded', o); });
+    nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ nav.classList.remove('open'); t.setAttribute('aria-expanded', false); }); });
+  }
+
+  // form validation
+  function validField(f){
+    var el = f.querySelector('input,select,textarea'); if(!el) return true;
+    var v = (el.value || '').trim(), ok = true, msg = '';
+    if(el.hasAttribute('required') && !v){ ok = false; msg = 'This field is required.'; }
+    else if(el.type === 'tel' && v){
+      var d = v.replace(/[\s-]/g,'').replace(/^(\+91|91|0)(?=\d{10}$)/,'');
+      if(!/^[6-9]\d{9}$/.test(d)){ ok = false; msg = 'Enter a valid 10-digit Indian mobile number.'; }
+    }
+    else if(el.type === 'email' && v && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){ ok = false; msg = 'Enter a valid email address.'; }
+    else if(el.type === 'number' && v){
+      var n = Number(v), mn = el.getAttribute('min'), mx = el.getAttribute('max');
+      if(isNaN(n) || (mn !== null && n < Number(mn)) || (mx !== null && n > Number(mx))){ ok = false; msg = 'Enter a value between ' + mn + ' and ' + mx + '.'; }
+    }
+    else if(el.type === 'date' && v && el.min && v < el.min){ ok = false; msg = 'Please choose today or a later date.'; }
+    if(ok && el.dataset.check && window[el.dataset.check]){ var r = window[el.dataset.check](el); if(r){ ok = false; msg = r; } }
+    var e = f.querySelector('.err'); if(e) e.textContent = msg;
+    f.classList.toggle('invalid', !ok);
+    el.setAttribute('aria-invalid', !ok);
+    return ok;
+  }
+  document.querySelectorAll('form.demo-form').forEach(function(form){
+    form.setAttribute('novalidate','');
+    form.querySelectorAll('.field').forEach(function(f){
+      var el = f.querySelector('input,select,textarea');
+      if(el){ el.addEventListener('blur', function(){ if(f.classList.contains('invalid')) validField(f); });
+              el.addEventListener('change', function(){ if(f.classList.contains('invalid')) validField(f); }); }
+    });
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var ok = true, first = null;
+      form.querySelectorAll('.field').forEach(function(f){ if(!validField(f)){ ok = false; if(!first) first = f; } });
+      if(form.dataset.extra && window[form.dataset.extra]){ if(!window[form.dataset.extra](form)) ok = false; }
+      if(!ok){ if(first){ var el = first.querySelector('input,select,textarea'); el && el.focus(); } return; }
+      openDemoModal(form.dataset.title || 'Enquiry received!', DEMO_MSG);
+      form.reset();
+      if(form.dataset.reset && window[form.dataset.reset]) window[form.dataset.reset](form);
+    });
+  });
+
+  // min date = today on date inputs
+  var td = new Date(); var iso = new Date(td.getTime() - td.getTimezoneOffset()*60000).toISOString().slice(0,10);
+  document.querySelectorAll('input[type=date]').forEach(function(d){ d.min = iso; });
+})();
+
+
+(function(){
+  var tabs=[].slice.call(document.querySelectorAll('.tab'));
+  function sel(t){
+    tabs.forEach(function(x){ var on=x===t; x.classList.toggle('on',on); x.setAttribute('aria-selected',on); x.tabIndex=on?0:-1; document.getElementById('panel-'+x.dataset.tab).hidden=!on; });
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){sel(t);});
+    t.addEventListener('keydown',function(e){ var j=null; if(e.key==='ArrowRight')j=(i+1)%tabs.length; if(e.key==='ArrowLeft')j=(i-1+tabs.length)%tabs.length; if(j!==null){e.preventDefault();tabs[j].focus();sel(tabs[j]);} });
+  });
+  var now=new Date(), d=now.getDay(), h=now.getHours()+now.getMinutes()/60;
+  var open = (d===0||d===6) ? (h>=9&&h<23) : (h>=8&&h<22);
+  var s=document.getElementById('status'); s.textContent = open ? '🟢 Open now' : '🔴 Closed now — see you soon!'; s.style.color = open ? '#1e7a3c' : '#a33';
+})();
+
+</script>
+</body>
+</html>

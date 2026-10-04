@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rajnish Tripathi — Full Stack Developer | PHP, Laravel, CodeIgniter</title>
+<meta name="description" content="Full Stack Developer with 6+ years experience in PHP, Laravel, CodeIgniter, MySQL, JavaScript. Building web applications, admin dashboards, and MIS reporting systems.">
+<meta property="og:title" content="Rajnish Tripathi — Full Stack Developer">
+<meta property="og:description" content="6+ years experience in PHP, Laravel, CodeIgniter, MySQL. Clean, maintainable code for business apps and dashboards.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rajnishtportfolio.netlify.app/job.html">
+<meta property="og:image" content="https://rajnishtportfolio.netlify.app/photo.jpg">
+<link rel="canonical" href="https://rajnishtportfolio.netlify.app/job.html">
+<meta name="theme-color" content="#1a2b4a">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%231a2b4a'/><text x='50' y='68' font-size='52' font-family='sans-serif' font-weight='bold' fill='%23ff6b00' text-anchor='middle'>RT</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Rajnish Tripathi",
+  "jobTitle": "Full Stack Developer",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Noida",
+    "addressRegion": "UP",
+    "addressCountry": "IN"
+  },
+  "email": "dev18.rajnish@gmail.com",
+  "telephone": "+918896730111",
+  "knowsAbout": ["PHP", "Laravel", "CodeIgniter", "MySQL", "JavaScript", "Web Development", "Admin Dashboards", "MIS Reporting"]
+}
+</script>
+
+<style>
+  :root{
+    --bg: #ffffff;
+    --bg-soft: #f8f9fa;
+    --navy: #1a2b4a;
+    --ink: #1a2b4a;
+    --muted: #5a6a85;
+    --orange: #ff6b00;
+    --orange-deep: #e05e00;
+    --green: #1e9e5a;
+    --line: #e6e9ef;
+    --sans: 'Inter', sans-serif;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{ background: var(--bg); color: var(--ink); font-family: var(--sans); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  a{ color:inherit; text-decoration:none; }
+  .wrap{ max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position: sticky; top:0; z-index:50;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .wrap{ display:flex; align-items:center; justify-content:space-between; height: 72px; }
+  .logo{ font-weight:900; font-size: 18px; color: var(--navy); letter-spacing:-0.3px; }
+  .logo span{ color: var(--orange); }
+  .navlinks{ display:flex; gap: 28px; font-size: 14.5px; font-weight:600; color: var(--muted); }
+  .navlinks a:hover{ color: var(--navy); }
+  .nav-cta{ background: var(--orange); color:#fff; font-size:14px; font-weight:700; padding: 11px 22px; border-radius: 8px; transition: background .15s ease; }
+  .nav-cta:hover{ background: var(--orange-deep); }
+  .menu-toggle{ display:none; background:none; border:none; color: var(--navy); font-size:24px; cursor:pointer; }
+  .mobile-menu{ display:none; flex-direction:column; padding: 8px 24px 18px; border-bottom:1px solid var(--line); background: var(--bg); }
+  .mobile-menu a{ font-size:15px; font-weight:600; color: var(--muted); padding: 11px 0; }
+  .mobile-menu.open{ display:flex; }
+
+  /* ---------- HERO ---------- */
+  .hero{ padding: 76px 0 70px; background: linear-gradient(180deg, var(--bg-soft), var(--bg)); }
+  .hero-grid{ display:grid; grid-template-columns: 1.12fr 0.88fr; gap: 54px; align-items:center; }
+  .hero-badge{ display:inline-flex; align-items:center; gap:8px; background: #fff; border: 1px solid var(--line); font-size: 13px; font-weight:700; color: var(--green); padding: 8px 16px; border-radius: 30px; margin-bottom: 22px; box-shadow: 0 2px 8px rgba(26,43,74,0.05); }
+  .hero-badge .dot{ width:8px; height:8px; border-radius:50%; background: var(--green); }
+  .hero h1{ font-weight:900; font-size: clamp(30px, 4.6vw, 48px); line-height: 1.12; letter-spacing:-1px; margin-bottom: 20px; color: var(--navy); }
+  .hero h1 span{ color: var(--orange); }
+  .hero p.sub{ color: var(--muted); font-size: 17px; max-width: 500px; margin-bottom: 18px; }
+
+  .skill-tags{ display:flex; flex-wrap:wrap; gap: 8px; align-items:center; margin-bottom: 26px; }
+  .skill-chip{ background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 5px 13px; font-size: 12.5px; font-weight:600; color: var(--navy); }
+
+  .hero-actions{ display:flex; gap: 14px; flex-wrap:wrap; margin-bottom: 36px; }
+  .btn{ font-size: 15px; font-weight:700; padding: 15px 28px; border-radius: 10px; display:inline-flex; align-items:center; gap:8px; transition: all .15s ease; }
+  .btn-orange{ background: var(--orange); color:#fff; box-shadow: 0 8px 20px -6px rgba(255,107,0,0.45); }
+  .btn-orange:hover{ background: var(--orange-deep); transform: translateY(-2px); }
+  .btn-outline{ border: 2px solid var(--line); color: var(--navy); background:#fff; }
+  .btn-outline:hover{ border-color: var(--navy); }
+  .hero-trust{ display:flex; gap: 34px; flex-wrap:wrap; }
+  .htrust b{ display:block; font-size: 24px; font-weight:900; color: var(--navy); }
+  .htrust span{ font-size: 13px; color: var(--muted); }
+
+  /* browser mockup */
+  .browser-card{ background:#fff; border:1px solid var(--line); border-radius: 14px; overflow:hidden; box-shadow: 0 30px 60px -25px rgba(26,43,74,0.28); }
+  .browser-bar{ display:flex; align-items:center; gap:7px; padding: 12px 16px; background: var(--bg-soft); border-bottom: 1px solid var(--line); }
+  .bdot{ width:10px; height:10px; border-radius:50%; background:#d7dbe3; }
+  .browser-url{ margin-left:8px; background:#fff; border:1px solid var(--line); border-radius: 6px; font-size:11.5px; color: var(--muted); padding: 4px 12px; flex:1; }
+  .browser-body{ padding: 22px; }
+  .mock-line{ height: 12px; border-radius: 6px; background: var(--bg-soft); margin-bottom: 10px; }
+  .mock-line.w60{ width: 60%; } .mock-line.w80{ width: 80%; }
+  .mock-hero{ height: 64px; border-radius: 8px; background: linear-gradient(135deg, var(--navy), #2a4470); margin-bottom: 14px; display:flex; align-items:center; padding: 0 16px; }
+  .mock-hero-btn{ background: var(--orange); border-radius: 5px; width: 90px; height: 22px; }
+  .task-pop{ display:flex; align-items:center; gap: 10px; background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; margin-top: 14px; box-shadow: 0 8px 20px -8px rgba(26,43,74,0.15); animation: pop-in 0.6s ease both; }
+  .task-pop:nth-of-type(2){ animation-delay: 1.2s; }
+  .task-ico{ width: 34px; height:34px; border-radius:50%; background:#1e9e5a; display:flex; align-items:center; justify-content:center; flex-shrink:0; color:#fff; font-weight:800; font-size:16px; }
+  .task-pop b{ font-size: 13px; display:block; color: var(--navy); }
+  .task-pop small{ font-size: 11.5px; color: var(--muted); }
+  @keyframes pop-in{ from{ opacity:0; transform: translateY(10px);} to{ opacity:1; transform:none;} }
+
+  /* ---------- SECTIONS ---------- */
+  section{ padding: 74px 0; }
+  section.soft{ background: var(--bg-soft); }
+  .sec-eyebrow{ font-size: 12.5px; font-weight:800; letter-spacing: 1.4px; text-transform:uppercase; color: var(--orange); margin-bottom: 10px; }
+  .sec-title{ font-weight:900; font-size: clamp(26px, 3.6vw, 38px); letter-spacing: -0.8px; color: var(--navy); margin-bottom: 14px; }
+  .sec-sub{ color: var(--muted); font-size: 16px; max-width: 620px; margin-bottom: 44px; }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{ display:grid; grid-template-columns: 0.8fr 1.2fr; gap: 50px; align-items:center; }
+  .about-photo{ aspect-ratio: 1/1; background: var(--navy); border-radius: 18px; display:flex; align-items:center; justify-content:center; color: #fff; font-size: 52px; font-weight:900; max-width: 320px; }
+  .about-text p{ color: var(--muted); font-size: 15.5px; margin-bottom: 16px; }
+  .about-text strong{ color: var(--navy); }
+  .about-tags{ display:flex; flex-wrap:wrap; gap: 10px; margin-top: 22px; }
+  .about-tag{ font-size: 13px; font-weight:700; padding: 8px 16px; background: #fff; border: 1px solid var(--line); border-radius: 30px; color: var(--navy); }
+
+  /* ---------- VALUES ---------- */
+  .values-grid{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .value-item{ background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 24px 20px; display:flex; align-items:center; gap: 14px; }
+  .value-icon{ font-size: 28px; flex-shrink: 0; }
+  .value-text b{ display:block; color: var(--navy); font-size: 15px; margin-bottom: 4px; }
+  .value-text span{ color: var(--muted); font-size: 13.5px; }
+
+  /* ---------- COMPETENCIES ---------- */
+  .services{ display:grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+  .service-card{ background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 28px 26px; transition: box-shadow .2s ease, transform .2s ease; }
+  .service-card:hover{ transform: translateY(-4px); box-shadow: 0 18px 36px -18px rgba(26,43,74,0.22); }
+  .service-icon{ width: 46px; height: 46px; border-radius: 12px; background: #fff2e8; color: var(--orange); display:flex; align-items:center; justify-content:center; font-size: 21px; margin-bottom: 16px; }
+  .service-title{ font-weight:800; font-size: 16.5px; color: var(--navy); margin-bottom: 8px; }
+  .service-desc{ color: var(--muted); font-size: 14px; }
+  .stack-row-tags{ display:flex; flex-wrap:wrap; gap: 10px; justify-content:center; margin-top: 34px; }
+  .stack-chip{ font-size: 13px; font-weight:600; padding: 8px 16px; background: var(--bg-soft); border: 1px solid var(--line); border-radius: 30px; color: var(--navy); }
+
+  /* ---------- WORK ---------- */
+  .work-grid{ display:grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+  .work-card{ background:#fff; border: 1px solid var(--line); border-radius: 14px; overflow:hidden; display:flex; flex-direction:column; transition: box-shadow .2s ease, transform .2s ease; }
+  .work-card:hover{ transform: translateY(-4px); box-shadow: 0 18px 36px -18px rgba(26,43,74,0.22); }
+  .work-thumb{ height: 110px; display:flex; align-items:center; justify-content:center; text-align:center; padding: 0 14px; color: #fff; font-weight:800; font-size: 15px; letter-spacing:0.2px; }
+  .thumb-insur{ background: linear-gradient(135deg, #14243d, #b8893f); }
+  .thumb-clinic{ background: linear-gradient(135deg, #1f4b41, #2f6f62); }
+  .thumb-coach{ background: linear-gradient(135deg, #12203a, #1f4fce); }
+  .thumb-retail{ background: linear-gradient(135deg, #1a1a1a, #c8362a); }
+  .thumb-cafe{ background: linear-gradient(135deg, #2d2119, #4a3626); }
+  .thumb-open{ background: repeating-linear-gradient(135deg, #f0f2f6, #f0f2f6 12px, #f8f9fa 12px, #f8f9fa 24px); color: var(--muted); }
+  .work-info{ padding: 18px 20px; flex:1; display:flex; flex-direction:column; }
+  .work-badge{ display:inline-block; font-size: 10.5px; font-weight:800; letter-spacing: 0.6px; padding: 4px 10px; border-radius: 5px; background: #fff2e8; color: var(--orange); margin-bottom: 10px; width: fit-content; }
+  .work-name{ font-weight:800; font-size: 15.5px; color: var(--navy); margin-bottom: 4px; }
+  .work-desc{ color: var(--muted); font-size: 13.5px; margin-bottom: 14px; flex:1; }
+  .work-link{ font-size: 13.5px; font-weight:800; color: var(--orange); }
+  .work-badge.emp{ background:#eef3fb; color: var(--navy); }
+  .thumb-bank{ background: linear-gradient(135deg, #0b2a5b, #2a6fdb); }
+  .work-link:hover{ text-decoration: underline; }
+
+  /* ---------- CONTACT ---------- */
+  .contact-box{ background: var(--navy); color:#fff; border-radius: 20px; padding: 56px 44px; text-align:center; }
+  .contact-box .sec-eyebrow{ color: #ffb27a; }
+  .contact-box h2{ font-weight:900; font-size: clamp(26px, 4vw, 40px); letter-spacing:-0.8px; margin-bottom: 14px; }
+  .contact-box p{ color: #b9c4d8; max-width: 500px; margin: 0 auto 28px; font-size: 15.5px; }
+  .contact-links{ display:flex; gap: 14px; justify-content:center; flex-wrap:wrap; margin-bottom: 20px; }
+  .btn-white{ background:#fff; color: var(--navy); }
+  .btn-white:hover{ background: #eef1f6; }
+  .contact-loc{ font-size: 13.5px; color: #8fa0bd; }
+  .contact-loc a{ color: #8fa0bd; }
+
+  footer{ padding: 28px 0; border-top: 1px solid var(--line); }
+  footer .wrap{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap: 10px; }
+  footer p{ font-size: 13px; color: var(--muted); }
+
+  @media (max-width: 780px){
+    .hero-grid{ grid-template-columns: 1fr; gap: 40px; }
+    .about-grid{ grid-template-columns: 1fr; }
+    .about-photo{ max-width: 240px; margin: 0 auto; }
+    .values-grid{ grid-template-columns: 1fr; }
+    .services, .work-grid{ grid-template-columns: 1fr; }
+    .navlinks{ display:none; }
+    .nav-cta{ display:none; }
+    .menu-toggle{ display:block; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .task-pop{ animation: none; }
+  }
+  .about-photo{ position:relative; overflow:hidden; }
+  .about-photo img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:1; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">Rajnish<span>.</span>Tripathi</div>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#competencies">Skills</a>
+      <a href="#work">Projects</a>
+      <a href="#contact">Connect</a>
+    </div>
+    <a href="Rajnish_Tripathi_Resume.pdf" class="nav-cta" download>📄 Resume</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu">&#9776;</button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about">About</a>
+    <a href="#competencies">Skills</a>
+    <a href="#work">Projects</a>
+    <a href="#contact">Connect</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="hero-badge"><span class="dot"></span>Open to Opportunities — Noida / Remote</div>
+      <h1>Full Stack Developer <span>· PHP · Laravel · MySQL</span></h1>
+      <p class="sub">6+ years of experience building web applications, admin dashboards, and MIS reporting systems. Clean, maintainable code that solves real business problems.</p>
+      <div class="skill-tags">
+        <span>Core Skills:</span>
+        <span class="skill-chip">PHP</span>
+        <span class="skill-chip">Laravel</span>
+        <span class="skill-chip">CodeIgniter</span>
+        <span class="skill-chip">MySQL</span>
+        <span class="skill-chip">JavaScript</span>
+        <span class="skill-chip">MIS / Excel / SQL</span>
+        <span class="skill-chip">API Integration</span>
+      </div>
+      <div class="hero-actions">
+        <a href="Rajnish_Tripathi_Resume.pdf" class="btn btn-orange" download>📥 Download Resume</a>
+        <a href="#contact" class="btn btn-outline">Let's Connect</a>
+      </div>
+      <div class="hero-trust">
+        <div class="htrust"><b>6+</b><span>years experience</span></div>
+        <div class="htrust"><b>Backend</b><span>heavy full stack</span></div>
+        <div class="htrust"><b>Noida</b><span>on-site / remote</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="browser-card">
+        <div class="browser-bar">
+          <span class="bdot"></span><span class="bdot"></span><span class="bdot"></span>
+          <span class="browser-url">dashboard-preview</span>
+        </div>
+        <div class="browser-body">
+          <div class="mock-hero"><div class="mock-hero-btn"></div></div>
+          <div class="mock-line w80"></div>
+          <div class="mock-line w60"></div>
+          <div class="task-pop">
+            <div class="task-ico">✓</div>
+            <div><b>Deployed</b><small>Report generation module shipped to production</small></div>
+          </div>
+          <div class="task-pop">
+            <div class="task-ico">✓</div>
+            <div><b>Resolved</b><small>Payment gateway integration issue fixed</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-eyebrow">About Me</div>
+    <h2 class="sec-title">A full-stack developer who bridges business logic and clean code.</h2>
+    <div class="about-grid">
+      <div class="about-photo"><img src="photo.jpg" alt="Rajnish Tripathi" loading="lazy" width="320" height="320" onerror="this.remove()"><span class="about-initials">RT</span></div>
+      <div class="about-text">
+        <p>I'm <strong>Rajnish Tripathi</strong>, a developer from Noida with <strong>6+ years of hands-on experience</strong> in PHP, Laravel, CodeIgniter, and MySQL.</p>
+        <p>I specialize in turning business requirements into <strong>working, maintainable web applications</strong> — from admin dashboards and MIS reports to public-facing business websites.</p>
+        <p>Whether it's building from scratch or working with legacy code, I focus on <strong>clean structure, fast execution, and clear communication</strong>.</p>
+        <div class="about-tags">
+          <span class="about-tag">✓ Full Stack (Backend Heavy)</span>
+          <span class="about-tag">✓ PHP · Laravel · CodeIgniter</span>
+          <span class="about-tag">✓ Remote / On-site Ready</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="values" class="soft">
+  <div class="wrap">
+    <div class="sec-eyebrow">What I Bring</div>
+    <h2 class="sec-title">Qualities that make me a great addition to your team</h2>
+    <div class="values-grid">
+      <div class="value-item">
+        <div class="value-icon">🧹</div>
+        <div class="value-text">
+          <b>Clean, Maintainable Code</b>
+          <span>I write well-structured code following best practices — easy for any team to pick up.</span>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">🧩</div>
+        <div class="value-text">
+          <b>Problem Solver</b>
+          <span>I enjoy breaking down complex problems and finding efficient solutions.</span>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">📚</div>
+        <div class="value-text">
+          <b>Quick Learner</b>
+          <span>Adaptable and ready to pick up new tools, frameworks, or domain knowledge.</span>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">🤝</div>
+        <div class="value-text">
+          <b>Team Player</b>
+          <span>Clear communicator, comfortable working independently or collaborating cross-functionally.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="competencies">
+  <div class="wrap">
+    <div class="sec-eyebrow">Core Competencies</div>
+    <h2 class="sec-title">Technical skills &amp; areas of expertise</h2>
+    <div class="services">
+      <div class="service-card">
+        <div class="service-icon">🖥️</div>
+        <div class="service-title">Web Application Development</div>
+        <div class="service-desc">Custom business apps, booking systems, and portals using PHP, Laravel, CodeIgniter.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <div class="service-title">Admin Dashboards &amp; MIS</div>
+        <div class="service-desc">Dashboards and reporting systems with Excel/SQL integration.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔗</div>
+        <div class="service-title">API Development &amp; Integration</div>
+        <div class="service-desc">RESTful APIs, payment gateways, SMS/WhatsApp integrations.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🗃️</div>
+        <div class="service-title">Database Design &amp; Optimization</div>
+        <div class="service-desc">MySQL schema design, query tuning, and performance optimization.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🐞</div>
+        <div class="service-title">Debugging &amp; Maintenance</div>
+        <div class="service-desc">Fixing legacy code, resolving production issues, adding features to existing systems.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📱</div>
+        <div class="service-title">Responsive Frontend</div>
+        <div class="service-desc">Mobile-first, clean UI with HTML, CSS &amp; JavaScript.</div>
+      </div>
+    </div>
+    <div class="stack-row-tags">
+      <span class="stack-chip">PHP</span>
+      <span class="stack-chip">Laravel</span>
+      <span class="stack-chip">CodeIgniter</span>
+      <span class="stack-chip">MySQL</span>
+      <span class="stack-chip">JavaScript</span>
+      <span class="stack-chip">HTML/CSS</span>
+      <span class="stack-chip">Excel / SQL / MIS</span>
+      <span class="stack-chip">REST APIs</span>
+      <span class="stack-chip">Git</span>
+    </div>
+  </div>
+</section>
+
+<section id="work" class="soft">
+  <div class="wrap">
+    <div class="sec-eyebrow">Projects</div>
+    <h2 class="sec-title">Selected projects &amp; work</h2>
+    <p class="sec-sub">Products I built independently and platforms I worked on during employment. I've also built <a href="index.html#work" style="color:var(--orange);font-weight:700">5 working sample business websites</a> with enquiry forms and WhatsApp flows.</p>
+    <div class="work-grid">
+      <div class="work-card">
+        <div class="work-thumb thumb-insur">Insuredge</div>
+        <div class="work-info">
+          <span class="work-badge">MY PRODUCT · INSURANCE CRM</span>
+          <div class="work-name">Insurance Policy CRM</div>
+          <div class="work-desc">Manage policies, leads, renewals and appointments from one dashboard, with KPI cards and analytics for advisors.</div>
+          <a href="https://insuredge.co.in/" class="work-link" target="_blank" rel="noopener">View Live →</a>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-thumb thumb-clinic">Fares Hunt</div>
+        <div class="work-info">
+          <span class="work-badge">MY PRODUCT · TRAVEL PLATFORM</span>
+          <div class="work-name">Flight-Fare Search Platform</div>
+          <div class="work-desc">Customers compare flight fares live. React frontend, Skyscanner API integration and a Laravel CRM for bookings and leads.</div>
+          <a href="https://www.fareshunt.com/" class="work-link" target="_blank" rel="noopener">View Live →</a>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-thumb thumb-coach">Just Wines</div>
+        <div class="work-info">
+          <span class="work-badge emp">DURING EMPLOYMENT · SHOPIFY</span>
+          <div class="work-name">Rewards &amp; Points System</div>
+          <div class="work-desc">Loyalty system that rewards repeat customers, built with a Laravel backend, React interface and Shopify APIs.</div>
+          <a href="https://justwines.com.au/" class="work-link" target="_blank" rel="noopener">View Store →</a>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-thumb thumb-retail">TRESemmé India</div>
+        <div class="work-info">
+          <span class="work-badge emp">DURING EMPLOYMENT · SHOPIFY</span>
+          <div class="work-name">E-commerce Storefront</div>
+          <div class="work-desc">Responsive Shopify storefront for a national brand, built with Liquid, HTML, CSS and JavaScript.</div>
+          <span class="work-link">Production work</span>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-thumb thumb-cafe">ENS Medicos</div>
+        <div class="work-info">
+          <span class="work-badge emp">DURING EMPLOYMENT · PHARMACY</span>
+          <div class="work-name">Pharmacy Management System</div>
+          <div class="work-desc">Inventory and billing workflows for a pharmacy business using PHP, CodeIgniter, MySQL and REST APIs.</div>
+          <span class="work-link">Production work</span>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-thumb thumb-bank">SBI Home Loans</div>
+        <div class="work-info">
+          <span class="work-badge emp">DURING EMPLOYMENT · BANKING</span>
+          <div class="work-name">Banking Platform</div>
+          <div class="work-desc">Worked on a mission-critical home loan platform at Tech Mahindra using PHP, CodeIgniter 3 and Oracle DB.</div>
+          <a href="https://homeloans.sbi.bank.in/" class="work-link" target="_blank" rel="noopener">View Platform →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-box">
+      <div class="sec-eyebrow">Let's Connect</div>
+      <h2>Interested in working together?</h2>
+      <p>I'm currently open to full-time roles, contract positions, and freelance projects. Let's discuss how I can add value to your team.</p>
+      <div class="contact-links">
+        <a href="mailto:dev18.rajnish@gmail.com" class="btn btn-orange" aria-label="Email Rajnish">✉️ Email Me</a>
+        <a href="https://www.linkedin.com/in/rajnishtripathigkp/" class="btn btn-white" target="_blank" rel="noopener" aria-label="Connect on LinkedIn">💼 LinkedIn</a>
+        <a href="https://github.com/developerrajnish" class="btn btn-white" target="_blank" rel="noopener" aria-label="View GitHub profile">💻 GitHub</a>
+        <a href="Rajnish_Tripathi_Resume.pdf" class="btn btn-outline" download aria-label="Download resume" style="color: var(--navy);">📄 Resume</a>
+     </div>
+      <div class="contact-loc">📍 Noida, India &nbsp;·&nbsp; <a href="tel:+918896730111">📞 +91 8896730111</a> &nbsp;·&nbsp; <a href="mailto:dev18.rajnish@gmail.com">dev18.rajnish@gmail.com</a></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Rajnish Tripathi</strong> © 2026 — Full Stack Developer</p>
+    <p>Clean code. Real results.</p>
+  </div>
+</footer>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  });
+</script>
+
+</body>
+</html>
